@@ -6,7 +6,7 @@
 `docker-compose up -d`
 
 # 集群快速搭建
-通过`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' node-80`可以查看各个节点在容器内网的ip，
+通过`docker inspect --format='{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' node-80`可以查看各个节点在容器内网的ip，
 下面的命令必须使用ip而非容器名称。
 ```
 docker exec -it  node-80 redis-cli -p 6380 --cluster create {node-80 ip}:6380  {node-81 ip}:6381  {node-82 ip}:6382  {node-83 ip}:6383  {node-84 ip}:6384  {node-85 ip}:6385 --cluster-replicas 1
